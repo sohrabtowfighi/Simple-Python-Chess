@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
-import board
+from . import board
 import os
 
 UNICODE_PIECES = {
-  'r': u'♜', 'n': u'♞', 'b': u'♝', 'q': u'♛',
-  'k': u'♚', 'p': u'♟', 'R': u'♖', 'N': u'♘',
-  'B': u'♗', 'Q': u'♕', 'K': u'♔', 'P': u'♙',
+  'r': 'r', 'n': 'n', 'b': 'b', 'q': 'q',
+  'k': 'k', 'p': 'p', 'R': 'R', 'N': 'N',
+  'B': 'B', 'Q': 'Q', 'K': 'K', 'P': 'P',
   None: ' '
 }
 
@@ -21,12 +21,12 @@ class BoardGuiConsole(object):
     def move(self):
         os.system("clear")
         self.unicode_representation()
-        print "\n", self.error
-        print "State a move in chess notation (e.g. A2A3). Type \"exit\" to leave:\n", ">>>",
+        print("\n", self.error)
+        print("State a move in chess notation (e.g. A2A3). Type \"exit\" to leave:\n", ">>>", end=' ')
         self.error = ''
-        coord = raw_input()
+        coord = input()
         if coord == "exit":
-            print "Bye."
+            print("Bye.")
             exit(0)
         try:
             if len(coord) != 4: raise board.InvalidCoord
@@ -38,16 +38,16 @@ class BoardGuiConsole(object):
         self.move()
 
     def unicode_representation(self):
-        print "\n", ("%s's turn\n" % self.board.player_turn.capitalize()).center(28)
+        print("\n", ("%s's turn\n" % self.board.player_turn.capitalize()).center(28))
         for number in self.board.axis_x[::-1]:
-            print " " + str(number) + " ",
+            print(" " + str(number) + " ", end=' ')
             for letter in self.board.axis_y:
                 piece = self.board[letter+str(number)]
                 if piece is not None:
-                    print UNICODE_PIECES[piece.abbriviation] + ' ',
-                else: print '  ',
-            print "\n"
-        print "    " + "  ".join(self.board.axis_y)
+                    print(UNICODE_PIECES[piece.abbriviation] + ' ', end=' ')
+                else: print('  ', end=' ')
+            print("\n")
+        print("    " + "  ".join(self.board.axis_y))
 
 
 def display(board):
