@@ -1,7 +1,12 @@
-Simple Python Chess
+Simple Python3 Chess
 -------------------
 Author: Liudmil Mitev
 E-Mail: liudmil.mitev@gmail.com
+
+Edits made by wyojustin
+2to3 fixes by sohrabtowfighi
+
+Licence is WTFPL
 -------------------
 
 A simple python chess implementation, a learning project.
@@ -23,8 +28,5 @@ To install the dependancies on debian/ubuntu run:
     sudo apt-get install python-tk python-imaging python-imaging-tk
 
 TODO:
-    * En passant
-    * Pawn promotion
-    * Fifty-move rule
     * Tests
     * Scalable GUI window
