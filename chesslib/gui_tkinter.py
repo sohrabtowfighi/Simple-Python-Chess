@@ -133,7 +133,6 @@ class BoardGuiTk(tk.Frame):
         current_row = int(8 - (event.y / row_size))
         position = self.chessboard.letter_notation((current_row, current_column))
         piece = self.chessboard[position]
-        print(current_column, current_row, piece)
         if self.from_square is not None: # on the second click, redraw
             self.redraw_square(self.from_square)
             self.redraw_square(self.to_square)
